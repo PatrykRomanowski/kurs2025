@@ -63,6 +63,48 @@ print(imie[:-1])
 print(imie[1:-1]) # usuwa pierwszy i ostatni element
 print(imie[1:-1])
 
+#importowanie bibliotek
+import math
+print(math.sqrt(9)) # funkcja z biblioteki math robi pierwiastek z 9
 
+from math import sqrt
+print(sqrt(16)) # wyciągnięcie z math konkretnej funkcji,żeby nie przepisywać wiele razy, choć mało stosowane, lepiej wyciągać z math
+
+
+imieMoje = "patryk"
+print(imieMoje.capitalize()) # zmienia moje imię na dużą literę
+print(imieMoje) # teraz należy pamiętać, że imię zostanie takie jak było, bo nie przepisałem nowej wartości, a poprzedni print działał na kopii
+
+imieMoje = imieMoje.capitalize() # teraz przypisuje nowa wartość
+print(imieMoje) # teraz wyświetli mi zmienioną wartość
+
+#pobieranie i formatowanie danych od użytkownika (służy do tego funkcja Input)
+# nowyInput1 = input()
+# nowyInput2 = input() # teraz należy pamiętać, że jak wpiszemy liczbe to beszie string
+# dlatego należy zastosować rzutowanie
+
+# nowyInput1 = int(input("Podaj pierwszy składnik "))
+# nowyInput2 = int(input("Podaj drugi składnik "))
+# print("Wynik dodawania to: " + str(nowyInput1 + nowyInput2))
+# print("Wynik dodawania to: ", nowyInput1 + nowyInput2)
+# print("Wynik dodawania to: ", nowyInput1, "+", nowyInput2, "=", nowyInput1 + nowyInput2)
+
+#operatory porównania
+#są to standardowe operatory, praktycznie jak w każdych językach, standardowo podczas porównywania zostaje nam zwracane true lub false np. print(2>=2) otrzymamy true
+
+#instrukcje warunkowe
+#przykłady zapisywania instrukcji warunkowych
+if (5<3):
+    print("Wyrażenie jest poprawne") # najważniejsze jest, zeby było wcięcie, bo dotyczy to konkretnego warunku WAŻNE: warunki muszą być tej samej wielkości dla tego samego warunku
+print("Wyrażenie jest poprawne") # ten print już nie należy do warunku dlatego, że nie ma odstępu
+
+liczba11 = 2
+liczba12 = 3
+if (liczba11 > liczba12):
+    print("liczba a jest większa od b")
+elif (liczba11 < liczba12):
+    print("liczba b jest większa od a")
+else:
+    print("liczba a i b są równe")
 
 
