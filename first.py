@@ -107,4 +107,121 @@ elif (liczba11 < liczba12):
 else:
     print("liczba a i b są równe")
 
+# trzeba pamiętać że wszystkie wartości oprócz 0 są zwracane jako true, czyli program zostanie dalej puszczony
+
+## operatory logiczne !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# wartosc = int(input("sprawdz czy wartość jest z zakresu 1 do 10: "))
+wartosc = 2
+
+if (wartosc >= 1):
+    if (wartosc <= 10):
+        print("wartość jest od 1 do 10")
+
+# operator logiczny and
+if (wartosc >= 1 and wartosc <= 10):
+    print("wartość jest pomiędzy 1 a 10 z operatorem and")
+
+# operator logiczny or
+# wtedy wystarczy że jeden argument jest true i program zostanie dalej wykonany
+
+#operator not
+if (not(wartosc >= 1 and wartosc <= 10)):
+    print("wartość NIE jest pomiędzy 1 a 10 z operatorem and")
+
+
+# PĘTLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# liczbaDlaPetli = 0
+
+# while liczbaDlaPetli <= 5:
+#     print(liczbaDlaPetli)
+#     liczbaDlaPetli += 1
+
+wynik = 0
+# i = 0
+# while i < 4:
+#     x1 = int(input("Podaj liczbę: "))
+#     x1 = 1
+#     wynik += x1
+#     i += 1
+
+# print("Wynik dodawania czterech liczb to: ", wynik)
+
+# for i in range(0, 4):
+#     x2 = int(input("Podaj liczbę: "))
+#     wynik += x2
+
+# print("Wynik dodawania czterech liczb to: ", wynik)
+
+
+# ćwiczenie 1
+# iloscDzialan = int(input("podaj ile działań chcesz wykonać: "))
+
+# i = 0
+# wynikDodawania = 0
+# while (i < iloscDzialan):
+#     liczba1 = int(input("podaj liczbę parzysta: "))
+#     if (liczba1 % 2 == 0):
+#         wynikDodawania += liczba1
+#         i += 1
+#     else:
+#         print("podałeś liczbę nieparzystą")
+#         continue
+# print("wynik dodawania: ", wynikDodawania)
+
+#ćwiczenie 2
+# import random
+# szukanaLiczba = random.randint(1, 1000)
+# liczbaUzytkownika = 0
+
+# while (not(szukanaLiczba == liczbaUzytkownika)):
+#     liczbaUzytkownika = int(input("Wpisz liczbę: "))
+#     if(liczbaUzytkownika > szukanaLiczba):
+#         print("szukana liczba jest mniejsza!")
+#     elif(liczbaUzytkownika < szukanaLiczba):
+#         print("szukana liczba jest większa!!!")
+#     else:
+#         print("wygrałeś!!!!")
+
+#LISTY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+imiona = ["Patryk", "Zosia", "Dominika"] #lista 3 el.
+liczby = [1, 2, 3]
+listaMieszana = [1, "a", 2]
+
+#wypisywanie z tablicy
+print(imiona[0]) # wyswietlenie pierwszego imienia z tablicy
+print(imiona[-1]) # wyswietlenie ostatniego imienia z tablicy
+
+print("Patryk" in imiona) # sprawdzanie czy konkretny element jest w TAblicy
+
+# imie = input("Wpisz imię: ")
+
+if (imie in imiona):
+    print("Masz dostep")
+else:
+    print("Brak dostepu")
+
+#metody do operowania na listach 
+testLista = [1, 2, 3, 4, 56, 12, 13, 14]
+print(len(testLista)) # sprawdzanie długości listy
+testLista.extend([333, 444]) # dodanie kolejnych dwóch elementów do listy
+print(testLista)
+testLista.insert(1, 1000) # wstawianie na miejsce pierwsze elementu o wartości 1000, element na konkretnej pozycji
+print(testLista)
+print(testLista.index(13)) # znalezienie na której konkretnie pozycji jest konkretny element
+newList = testLista
+newList.sort() # funkcja pozwalająca posortować elementy od najmniejszej do największej
+print(newList) # posortowanie listy
+
+#dodatkowe przydatne funkcje
+# .max - znalezienie największej wartości
+# .min - znalezienie minimalnej wartości
+print(min(testLista)) # przykład zastosowania
+# .count - znajdowanie ile konkretnych wystąpień jest w danej tablicy
+print(testLista.count(13)) 
+# .pop - usuwa ostatni element
+# .remove - usuwa pierwsze wystąpienie w tablicy
+# .clear - czyści listę
+# .reverse - odwraca kolejność listy
 
