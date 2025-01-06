@@ -215,6 +215,7 @@ newList.sort() # funkcja pozwalająca posortować elementy od najmniejszej do na
 print(newList) # posortowanie listy
 
 #dodatkowe przydatne funkcje
+# .append - dodanie elementu na koniec listy
 # .max - znalezienie największej wartości
 # .min - znalezienie minimalnej wartości
 print(min(testLista)) # przykład zastosowania
@@ -225,3 +226,132 @@ print(testLista.count(13))
 # .clear - czyści listę
 # .reverse - odwraca kolejność listy
 
+#Krotki - tuple !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#najważniejszą różnicą miedzy listami jest to, że krotki nie można póżniej zmieniać
+krotka = 1, 2, 3, 12, 12, -12 #aby stworzyć krotkę nie dajemy nawiasów kwadratowych, ewentualnie nawiasy okkrągłe
+
+print(krotka[4])
+#po co korzystać z krotki? - kiedy tylko możliwe, zawsze kiedy wiesz, że nie bedzie zmieniana, bo wtedy napewno się nie pomylisz i krotki są szybsze i zajmują mniej miejsca w pamięci
+
+#Słowniki - dictionary !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+pokoje = {45: 'Patryk Romanowski', 46: 'wolny', 47: 'Zbigniew Nowak'} #przykładowy słownik
+pokoje[46] = 'Jan Kowalski' #dodanie nowego elementu do słownika, jeśli klucz jest to zmnienia się wartość
+pokoje[48] = "wolny" #jeżeli nie ma klucza jest dodawany nowy do słownika, z przypisaną wartością
+# inne metody pracy na słownikach
+pokoje.get(48) # wyświetla aktualną wartośc dla podanego klucza
+pokoje.update({48: 'Kazimierz Nowak'}) #aktualizacja wartości dla wybranego klucza
+del(pokoje[48]) #usuwanie wartości spod klucza, razem z kluczem
+print(pokoje.pop(47)) # usuwanie wartości wraz ze zwróceniem usuwanej wartości
+# pokoje.clear() # usunięcie całego słownika
+print(len(pokoje)) # sprawdzenie ile wartości znajduje się w słowniku
+
+# Zbiory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#różnice pomiędzy listami, krotkami, zbiorami i słownikami
+
+#           el.unikalne         kolejność           zmiana konkretnego el.      nowe elementy
+#listy          NIE                 TAK                 TAK                         TAK
+#krotki         NIE                 TAK                 NIE                         NIE
+#słowniki       TAK                 NIE                 TAK                         TAK
+#zbiory         TAK                 NIE                 NIE                         TAK
+
+zbiorA = {1, 2, 3, 4, 1, 2} # 1 i 2 się nadpiszą bo nie mogą byc dwa takie same elementy
+zbiorA.add(7) # sposób na dodanie nowego elementu
+# zaletą zbioru jest unikalność, wykorzystujemy jeżeli nie chcemy mieć zduplikowanych danych
+print(set(zbiorA)) # w taki sposób 
+zbiorA.discard(1) #usuwa ze zbioru wartosc 1
+
+#TYPY ZAGNIEŻDZONE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+imie1 = "Patryk"
+nazwisko1 = "Romanowski"
+wiek1 = 34
+imie2 = "Arek"
+nazwisko2 = "Nowak"
+wiek2 = 38
+
+osoba1 = ('PAtryk', 'Romanowski', 34)
+osoba2 = ('Arek', 'Nowak', 38)
+
+listaGosci = [          # jest to zagnieżdzona lista, ale wewnątrz listy możemy np. użyć krotki
+    ['Patryk', 'Romanowski', 34],
+    ['Arek', 'Nowak', 38]
+]
+
+print(listaGosci[1][1])
+
+for imie, nazwisko, wiek in listaGosci:  # gdy wypisujemy poszczególne elementy z listy, automatycznie sie przypisują do podanych zmiennych w pętli
+    print("imię: ", imie)
+    print("nazwisko: ", nazwisko)
+    print("wiek: ", wiek)
+
+## wypisywanie zagnieżdzeń !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+people = {
+        "IcFDG2bO9AYDF651DoyH": {'name': 'John', 'age': 27, 'sex': 'Male'},
+        "KcD9ntE6IRM59vkVta1k": {'name': 'Marie', 'age': 22, 'sex': 'Female'},
+        "yDlgcn99xPc19mYXcRmy": {'name': 'Agness', 'age': 25, 'sex': 'Female'},
+        "cpQh6GiAbBdGv35NDoTk": {'name': 'Nabeel', 'age': 17, 'sex': 'Male'},
+        "12BifzWxCQySKgLhgahC": {'name': 'Jasmin ', 'age': 42, 'sex': 'Female'},
+        "QLnmg0pzlLj9x7c7DlLv": {'name': 'Ruby', 'age': 55, 'sex': 'Female'},
+        "To47urX0DUznWmOxGZ6H": {'name': 'Lori', 'age': 27, 'sex': 'Male'},
+        "KQ4bir3y4tlkbG69I7zq": {'name': 'Marie', 'age': 42, 'sex': 'Female'},
+        "94cp4hsyZP2BnCh4D34z": {'name': 'Agness', 'age': 25, 'sex': 'Female'},
+        "Vr4wRdkljeEs46Czxo54": {'name': 'Chiara', 'age': 17, 'sex': 'Male'},          
+         }
+
+people2 = [
+         {'id': 'IcFDG2bO9AYDF651DoyH', 'name': 'John', 'age': 27, 'sex': 'Male'},
+         {'id': 'KcD9ntE6IRM59vkVta1k', 'name': 'Marie', 'age': 22, 'sex': 'Female'},
+         {'id': 'yDlgcn99xPc19mYXcRmy', 'name': 'Agness', 'age': 25, 'sex': 'Female'}               
+        ]
+
+people3 = ["Arkadiusz",
+           "Wiola",
+           "Kuba"
+          ]
+
+ratings1 = {
+            "Arkadiusz": (2,1,2,3,2,3),
+            "Agness": (4,2,1,3,4)           
+           }    
+ratings2 = [
+        {'name': "Arkadiusz", 'ratings': (2,1,2,3,2,3), 'behaviour': 4},
+        {'name': "Agness", 'ratings': (4,2,1,3,4), 'behaviour': 2}
+    ]
+
+ratings3 = {
+        "Arkadiusz": {'ratings': (2,1,2,3,2,3), 'behaviour': 4},
+        "Agness:": {'ratings': (4,2,1,3,4), 'behaviour': 2}
+    }
+
+for key in ratings1:
+    print(key,  "oceny: ", ratings1[key])
+
+for value in people2:
+    print(value)
+    for key in value:
+        print(key, value[key])
+
+for key in people:
+    print(key)
+    for item in people[key]:
+        print(item, ": ", people[key][item])
+
+for id, dictionary in people.items(): #szybsza metoda, ale da radę stosować tylko do słowników
+    print("ID: ", id)
+    for key in dictionary:
+        print(key, ": ", dictionary[key])
+
+# Ćwiczenia !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+slownik = {}
+endProgram = False
+userChange = ""
+
+while (not(endProgram)):
+    print("wybierz działanie: ")
+    print("jeśli chcesz zakonczyc działanie programu wpisz: END")
+    print("jeśli chcesz dodać nową definicję wpisz: ADD")
+    print("Jeśli chcesz znalężć definicję wpisz: FIND")
+    print("Jeśli chcesz usunąć definicję wpisz: DEL")
+    userChange = input("Wpisz odpowiedni znak: ")
+    if(userChange == "END"):
+        endProgram = True
