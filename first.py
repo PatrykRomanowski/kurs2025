@@ -342,16 +342,184 @@ for id, dictionary in people.items(): #szybsza metoda, ale da radę stosować ty
         print(key, ": ", dictionary[key])
 
 # Ćwiczenia !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-slownik = {}
-endProgram = False
-userChange = ""
 
-while (not(endProgram)):
-    print("wybierz działanie: ")
-    print("jeśli chcesz zakonczyc działanie programu wpisz: END")
-    print("jeśli chcesz dodać nową definicję wpisz: ADD")
-    print("Jeśli chcesz znalężć definicję wpisz: FIND")
-    print("Jeśli chcesz usunąć definicję wpisz: DEL")
-    userChange = input("Wpisz odpowiedni znak: ")
-    if(userChange == "END"):
-        endProgram = True
+# slownik = {}
+# endProgram = False
+# userChange = ""
+# newDef = ""
+# defDescription = ""
+
+# while (not(endProgram)):
+#     print("wybierz działanie: ")
+#     print("jeśli chcesz zakonczyc działanie programu wpisz: END")
+#     print("jeśli chcesz dodać nową definicję wpisz: ADD")
+#     print("Jeśli chcesz znalężć definicję wpisz: FIND")
+#     print("Jeśli chcesz usunąć definicję wpisz: DEL")
+#     userChange = input("Wpisz odpowiedni znak: ")
+#     if(userChange == "END"):
+#         endProgram = True
+#     elif(userChange == "ADD"):
+#         newDef = input("Wpisz nazwę definicji: ")
+#         defDescription = input("Dodaj opis definicji: ")
+#         slownik[newDef] = defDescription
+#         print("Zapisano nową definicję !!!!")
+#     elif(userChange == 'FIND'):
+#         print("Zapisane definicje")
+#         for item in slownik:
+#             print(item)
+#         myChange = input("Wybierz definicję: ")
+#         if myChange in slownik:
+#             print(myChange, ": ", slownik[myChange])
+#         else:
+#             print("Nie ma wybranej definicji")
+#     elif(userChange == 'DEL'):
+#         itemDel = input("Wpisz element do usunięcia: ")
+#         if itemDel in slownik:
+#           del(slownik[itemDel])
+#           print("usunięto rekord")
+#         else:
+#             print("nie ma w bazie podanego elementu")
+
+# Wyrażenia listowne!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# liczby2 = [1 ,2, 3, 4, 5, 6, 7]
+# liczbyDoPotegi = [element**2
+#                   for element in liczby2]
+# liczbyParzyste = [element
+#                   for element in liczby2
+#                   if (element % 2 == 0)
+#                   ]
+# print(liczby2)
+# print(liczbyDoPotegi)
+# print(liczbyParzyste)
+
+#Wyrażenia generujące !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# evenNumbersGenerator = (element**2
+#                         for element in range(100)
+#                         )
+# sum = 0
+# for item in evenNumbersGenerator:
+#     sum += item
+#     print(item)
+# print(sum)
+
+#Wyrażenie słownikowe
+names = ["Patryk", "Zosia", "Dominika"]
+numbers = [1, 2, 3]
+celcius = {'t1': 20, 't2': -10, 't3': 12}
+
+namesLength = {
+    name : len(name)
+    for name in names
+}
+
+multipleNumbers = {
+    number : number*number
+    for number in numbers
+    if number > 1
+}
+print(multipleNumbers)
+
+fahrenheit = {
+    key: (temp * 1.8) + 32
+    for key, temp in celcius.items()
+}
+
+print(fahrenheit)
+
+#wyrażenie zbioru !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+names = {"patryk", "Zosia", "dominika"}
+names = {name.capitalize()
+         for name in names
+         if not(name.upper().startswith("P"))}
+
+
+print(names)
+
+## zadanie!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+result = [element
+          for element in range(2,470)
+          if(element % 7 == 0) and not(element % 5 == 0)]
+
+print(result)
+
+# FUNKCJE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+def wiadomosc_powitalna(name):
+    print("Witaj: ", name, "!")
+
+wiadomosc_powitalna("Patryku")
+wiadomosc_powitalna("Dominiko")
+wiadomosc_powitalna("Zosiu")
+
+#funkcja z wieloma parametrami
+
+def pole_prostokata(a, b):
+    print("Pole wynosi: ", a*b)
+
+pole_prostokata(12, 12)
+
+#funkcja zwracająca wartośc
+
+def oblicz_pole(a, b):
+    return a * b
+
+print(5 * oblicz_pole(5,5))
+
+#ćwiczenie - program liczący powierzchnie figur
+
+def prostokat(a, b):
+    return a * b
+
+def kwadrat(a):
+    return a*a
+
+def trojkat(a, h):
+    return 0.5*a*h
+
+def kolo(r):
+    return math.pi * r*r
+
+def trapez(a, b, h):
+    return (a*h) - (0.5 * h * (a-b))
+
+# def obliczanie(liczba):
+#     if(liczba == 1):
+#        aProstokat = int(input("Wpisz długośc boku: "))
+#        hProstokat = int(input("Wpisz wysokość: "))
+#        print("Wynik: ", prostokat(aProstokat, hProstokat)) 
+#     elif(liczba == 2):
+#         aKwadrat = int(input("Wpisz długośc boku: "))
+#         print("Wynik: ", kwadrat(aKwadrat))
+#     elif(liczba == 3):
+#         aTrojkat = int(input("Wpisz długośc boku: "))
+#         hTrojkat = int(input("Wpisz wysokosc: "))
+#         print("Wynik: ", trojkat(aTrojkat, hTrojkat))
+#     elif(liczba == 4):
+#         rKolo = int(input("Wpisz promień koła: "))
+#         print("Wynik: ", kolo(rKolo))
+#     elif(liczba == 5):
+#         aTrapez = int(input("Wpisz dłuższy bok: "))
+#         bTrapez = int(input("Wpisz krótszy bok: "))
+#         hTrapez = int(input("Wpisz wysokośc: "))
+#         print("Wynik: ", trapez(aTrapez, bTrapez, hTrapez))
+#     else:
+#         print("wpisałeś niepoprawną wartość")
+
+    
+
+# print("Wybierz jaką figurę chcesz obliczyć")
+# print("pole prostokąta - 1")
+# print("pole kwadratu - 2")
+# print("pole trójkąta - 3")
+# print("pole koła - 4")
+# print("pole trapezu - 5")
+# wybor = int(input("Wpisz liczbę: "))
+# obliczanie(wybor)
+
+
+
+
+
+
+
