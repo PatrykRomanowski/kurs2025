@@ -457,8 +457,6 @@ wiadomosc_powitalna("Zosiu")
 def pole_prostokata(a, b):
     print("Pole wynosi: ", a*b)
 
-pole_prostokata(12, 12)
-
 #funkcja zwracająca wartośc
 
 def oblicz_pole(a, b):
@@ -517,9 +515,82 @@ def trapez(a, b, h):
 # wybor = int(input("Wpisz liczbę: "))
 # obliczanie(wybor)
 
+import figury
+
+print(figury.pole_kola(1))
+
+from enum import IntEnum
+
+Menu_Figury = IntEnum('Figury', 'kwadrat prostokat trojkat koło trapez')
+print(Menu_Figury.kwadrat)
+
+#Zadanie
+import time
+
+def sumuj_do1(ilosc_liczb):
+    wynik = 0
+    for liczba in range(ilosc_liczb):
+      wynik += liczba
+    return wynik
+
+def sumuj_do2(ilosc_liczb):
+   return sum((ilosc_liczb 
+               for ilosc_liczb in range(1, ilosc_liczb + 1)))
+
+def sumuj_do3(ilosc_liczb):
+    return (1 + ilosc_liczb) / 2 * ilosc_liczb
+
+print("Wynik sum1 wynosi: ", sumuj_do1(5000))
+print("Wynik sum2 wynosi: ", sumuj_do2(5000))
+print("Wynik sum3 wynosi: ", sumuj_do3(5000))
+
+def function_performance(func, arg):
+   start = time.perf_counter()
+   result = func(arg)
+   print("wynik: ", result)
+   end = time.perf_counter()
+   return end - start
+
+def show_message(show_message):
+    print("wiadomość: ", show_message)
+
+function_performance(sumuj_do1, 5000)
+function_performance(sumuj_do2, 5000)
+function_performance(sumuj_do3, 5000)
+
+#Domyślne argumenty
+def increment(x, amount = 1):
+    return x + amount
+
+print(increment(12)) # w tym przypadku wystarczy podać jeden argument
+
+#argumenty kluczowe i pozycyjne
+def greet(name, message):
+    print(message, name, sep="     \n ") 
+
+greet("Patryk", "HEJ!") # w tym przypadku argumenty zostaną przypisane zgodnie z kolejnością
+greet(message="Witaj", name = "Patryk") # w tym przypadku argument zostanie przypisany do konkretnej nazwy, teraz kolejnośc nie ma znaczenia
+
+list1 = [x for x in range(100)]
+zbior1 = {x for x in range(100)}
+
+def suchInList(suchNumber, list):
+    print(suchNumber)
+
+def task_function(number, name, how_many = 100):
+  if name == "list":  
+    for i in range(how_many):
+      result = [element 
+                  for element in list1
+                  if element == number]                      
+      print(result)
+  elif name == "zbior":
+      for _ in range(how_many):
+          result = [element 
+                    for element in zbior1
+                    if element == number]
+          print(result)
 
 
-
-
-
-
+print(task_function(12, "list"))
+print(task_function(12, "zbior"))
