@@ -676,3 +676,70 @@ my_list = [2, 5, 6, 12, 14, 18, 22]
 
 my_list_filter = list(filter(lambda x: x % 2 == 0, my_list))
 print(my_list_filter) # zwrócona lista zawierająca liczby parzyste
+
+number1 = [1, 3, 5 ,7, 8]
+number2 = [1, 3, 5, 7, 9]
+number3 = [2, 4, 6, 8, 12]
+
+def any_even(lista):
+    for nr in lista:
+        if nr %2 == 0:
+            return True
+    
+    return False
+
+print(any_even(number1))
+print(any_even(number2))
+
+number11 = [nr % 2 == 0  #tutaj dostanę tablice number11 = [False, False, False, False, True]
+for nr in number1
+]
+number12 = [nr % 2 == 0  #tutaj dostanę tablice number11 = [False, False, False, False, True]
+for nr in number2
+]
+
+print(number11)
+
+# teraz można użyć funkcji any, by sprawdzić czy w danej liście jest jakikolwiek element true
+result = any(number11)
+print(result)
+result2 = any(number12)
+print(result2)
+
+#funkcja all
+number13 = [nr % 2 == 0  #tutaj dostanę tablice number11 = [False, False, False, False, True]
+for nr in number3
+]
+
+result3 = all(number13) # w tym przypadku wszystkie wartości będą true, więc funkcja zwróci wartośc tru, ponieważ wszystkie będą true
+print(result3)
+
+person = {
+    "name": "Patryk Romanowski",
+    "age": 34,
+    "skills": ["Python", "Java Script", "React", "C++"]
+}
+
+print(person["skills"])
+
+def checkSkills(skills, skillsForJob = ["Python", "C++"]):
+    skillsTrue = [
+        skill in skills
+        for skill in skillsForJob
+    ]
+    return skillsTrue
+
+def getInfoAboutPerson(personValue):
+    if(personValue == True):
+        return "NADAJE SIĘ!"
+    else:
+        return "NIE NADAJE SIĘ"
+
+personAccept = all(checkSkills(person["skills"]))
+personAcceptInfo = getInfoAboutPerson(personAccept)
+ 
+print("Kandydat: ", person["name"], ":", personAcceptInfo)
+
+#losowanie !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+import random
