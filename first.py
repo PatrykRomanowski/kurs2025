@@ -571,26 +571,108 @@ def greet(name, message):
 greet("Patryk", "HEJ!") # w tym przypadku argumenty zostaną przypisane zgodnie z kolejnością
 greet(message="Witaj", name = "Patryk") # w tym przypadku argument zostanie przypisany do konkretnej nazwy, teraz kolejnośc nie ma znaczenia
 
-list1 = [x for x in range(100)]
-zbior1 = {x for x in range(100)}
+list1 = [x for x in range(1000)]
+zbior1 = {x for x in range(1000)}
 
-def suchInList(suchNumber, list):
-    print(suchNumber)
+print("!!!!!!!!!!!!!!!!")
 
-def task_function(number, name, how_many = 100):
+def task_function(number, name, how_many = 1000):
   if name == "list":  
+    start = time.perf_counter()
+    retValue = "nie"
     for i in range(how_many):
-      result = [element 
+        result = [element 
                   for element in list1
-                  if element == number]                      
-      print(result)
+                  if element == number]   
+        if(result != []):
+            retValue = "tak"
+        else:
+            retValue = "nie" 
+    end = time.perf_counter()
+    timeList = end - start
+    return(retValue, timeList)
+
   elif name == "zbior":
+      start = time.perf_counter()
+      retValue = "nie"
       for _ in range(how_many):
           result = [element 
                     for element in zbior1
                     if element == number]
-          print(result)
+          if(result != []):
+             retValue = "tak"
+          else:
+             retValue = "nie"
+      end = time.perf_counter()
+      timeList = end - start
+      return(retValue, timeList)
+
+print(task_function(120, "list"))
+print(task_function(120, "zbior"))
+
+def function_performrnce2(func, *arg, how_many = 1000):
+    sum = 0
+
+    for i in range(0, how_many):
+        start = time.perf_counter()
+        func(*arg)
+        end = time.perf_counter()
+        sum = sum + (end-start)
+
+    return sum
+
+def is_element_in(what_value, container):
+    if what_value in container:
+        return True
+    else:
+        return False
+
+print(function_performrnce2(is_element_in, 450, list1, how_many= 3000))
+print(function_performrnce2(is_element_in, 450, zbior1, how_many= 3000))
 
 
-print(task_function(12, "list"))
-print(task_function(12, "zbior"))
+def count(*arg):
+    suma = 0
+    for i in arg:
+        suma += i
+    return suma
+
+print(count(2,4,1,2,4,5, 10))
+
+
+#Zasięg globalny vs zasięg lokalny !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#obiekty:
+""" 
+    Obiekty to zmienna która ma więcej możliwości 
+    można wywołać na niej funkcje
+    może mieć więcej niż jedną wartość
+
+    obiekty immutable: bool, int, float, tuple, str
+
+    immutable - niezmienne
+    mutable - zmienny
+"""
+
+listSample = [1, 4, 512, 24]
+listSample2 = listSample
+listSample2.append(465)
+print(listSample)
+print(listSample2)
+
+a1 = 4
+print(a1)
+b1 = a1
+print(b1)
+b1 = 7
+print(b1)
+
+# funkcje anonimowe - lambda
+
+test = lambda x: x * 2
+print(test(6))
+
+my_list = [2, 5, 6, 12, 14, 18, 22]
+
+my_list_filter = list(filter(lambda x: x % 2 == 0, my_list))
+print(my_list_filter) # zwrócona lista zawierająca liczby parzyste
