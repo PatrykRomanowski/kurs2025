@@ -743,3 +743,104 @@ print("Kandydat: ", person["name"], ":", personAcceptInfo)
 #losowanie !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 import random
+from collections import Counter
+
+print(random.random()) # losuje liczbe o 0 do 1, do wielu miejsc po przecinku
+
+#zadanie: licznik randomowych trafień
+
+hit = 0
+not_hit = 0
+counter = 0
+
+while counter < 1000:
+    counter += 1
+    los = random.uniform(0, 100)
+    if los <= 50:
+        hit += 1
+    else:
+        not_hit += 1
+
+print("trafienia:", hit)
+print("pudła:", not_hit)
+
+random.randint(1, 100) # to losuje od 1 do 100 i nic nie trzeba dodawać ani odejmować
+
+#funkcje choice i choices
+movieList = ["Film1", "Film2", "Film3", "Film4", "Film5"]
+nagrody = ["długopis", "książka", "samochód"]
+print(random.choice(movieList))
+
+print(Counter(random.choices(nagrody, [100, 10, 1], k=1000))) # losujemy, wraz ze zliczeniem elementów(dzięki importowaniu funkcji Counter) 1000 razy (parametr k) z 3 elementów (liczby w liście oznaczają ile razy więcej dany element ma być brany pod uwagę (pierwszy - 100 razy bardziej, drugi - 10 razy bardziej))
+
+#funkcja shuffle
+
+cardList = ["9", "9", "9", "9", "10", "10", "10", "10", "J", "J", "J", "J", "Q", "Q", "Q", "Q", "K", "K", "K", "K", "A", "A", "A", "A", "JOKER", "JOKER"]
+random.shuffle(cardList)
+print(cardList)
+
+#ćwiczenie - symulator lotto, losujący 6 z 49 liczb
+
+def choose_random_numbers(amount, total_amount):
+    print(random.sample(range(total_amount), amount))
+    print(random.sample(range(total_amount), amount))
+
+myLos = choose_random_numbers(6, 49)
+
+#ćwiczenie !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"""
+Napisz krótką grę w której masz 5 ruchów w jedną stronę poprzez KOMNATĘ.
+
+Za każdym razem masz szansę spotkać po drodzę skrzynkę lub NIC.
+
+Skrzynki mają różne kolory.
+
+Kolor skrzynki oznacza jak rzadka jest ta skrzynka.
+
+zielona - 75%
+pomarańczowa - 20%
+fioletowa - 4%
+złota (legendarna) - 1%
+
+Ustaw, że jest 40% szansy, że nie spotkasz niczego. 60%, że będzie skrzynka.
+
+Ustaw złoto jako to co może "wypaść" ze skrzynki:
+zielony - 1000,
+pomaranczowy - 4000,
+fioletowy - 9000,
+zlota - 16000
+
+Pamiętaj o:
+1) czystym kodzie
+2) nazywaniu zmiennych tak by bylo samoopisujace sie
+3) spróbuj napisać program po angielsku
+
+"""
+
+gameLength = 50
+boxes = [
+    {'color': 'green', 'value': 1000}, 
+    {'color': 'orange', 'value': 4000}, 
+    {'color': 'purple', 'value': 9000}, 
+    {'color': 'gold', 'value': 16000}
+]
+valueBox = {}
+myElements = []
+i = 0
+
+while i < gameLength:
+    i+=1
+    isBox = random.choices([True, False], [60, 40])
+    if isBox[0] == True:
+        newBox = random.choices(boxes, [75, 20, 4, 1])
+        myElements.extend(newBox)
+    else:
+        continue
+
+result = [
+    element['value']
+    for element in myElements
+        ]
+
+print(result)
+print('Twój wynik to: ', sum(result))
