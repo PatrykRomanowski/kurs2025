@@ -844,3 +844,129 @@ result = [
 
 print(result)
 print('Twój wynik to: ', sum(result))
+
+## rozwiązanie !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# from enum import Enum
+
+# Event = Enum('Event', ['Chest', 'Empty'])
+
+# eventDictionary = {
+#                     Event.Chest: 0.6,
+#                     Event.Empty: 0.4
+#                 }
+
+# Colours = Enum('Colours', {
+#     'Green': 'zielony',
+#     'Orange': 'pomarrańczowy',
+#     'Purple': 'fioletowy',
+#     'Gold': 'złoty'
+# })
+
+# chestColoursDictionary = {
+#                             Colours.Green :  0.75,
+#                             Colours.Orange : 0.2,
+#                             Colours.Purple : 0.04,
+#                             Colours.Gold : 0.01
+#                          }
+
+# chestColourList = tuple(chestColoursDictionary.keys())
+# chestColourProbability = tuple(chestColoursDictionary.values())
+
+# eventList = list(eventDictionary.keys())
+# eventProbality = list(eventDictionary.values())
+
+# rewardsForChests  = {
+#                     chestColourList[reward]: (reward + 1) * (reward + 1) * 1000
+#                     for reward in range(len(chestColourList))
+# }
+
+# gameLength1 = 5
+# goldRequired = 0
+# print("Welcome on my game called KOMNATA!")
+# print("""You have only five steps to make,
+#     see yourself how much gold you collect!!!
+# """)
+
+# while gameLength1 > 0:
+#     gameAnswer = input("Do you want to move forward?")
+#     if(gameAnswer == "yes"):
+#         print("Great, let's see what you got...")
+#         gameLength1 -= 1
+#         drawnEvent = random.choices(eventList, eventProbality)[0]
+#         if(drawnEvent == Event.Chest):
+#             print("You've drawn a Chest")
+#             drawnColor = random.choices(chestColourList, chestColourProbability)[0]
+#             print("The chest color is:", drawnColor.value)
+#             gamerreward = rewardsForChests[drawnColor]
+#             goldRequired += gamerreward
+#         elif(drawnEvent == Event.Empty):
+#             print("You've drawn nothing")
+#     else:
+#         print("You can go just straight man")
+#         continue
+# print("Congratulation!!! You earned: ", goldRequired, "golds!")
+
+# przybliżenia !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+def findAproximateValue(value):
+    lowestValue = value * 0.9
+    highestValue = value * 1.1
+    return random.randint(lowestValue, highestValue)
+
+#operacje na plikach !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#podstawowe metody otwierania plików
+# r - R - read 
+# w - W - write
+# a - A - append (dopisywanie)
+
+with open("test", "w") as file: #mamy odwołanie do pliku - uchwycenie (HANDLE)
+    file.write("sample")
+    file.write("sample2")
+    file.close() # żeby zapisać dane w pliku, koniecznie trzeba zamknąć plik
+
+with open("oceany.txt", "r", encoding="UTF-8") as file:
+    oceany = file.read().splitlines() # jeżeli chcemy przeczytać wszystko i pozbyć się lini, z każdej lini zrobi osobną wartośc w tablicy
+    oceany2 = file.readlines() # czyta wszystkie linie i zapisuje w tablicy
+
+with open("oceany.txt", "a", encoding="UTF-8") as file:
+    print(file.tell()) #sprawdza w którym miejscu zakończyliśmy, warto zauważyć że append użyliśmy 
+    file.write("\nNowy ocean") #dopisuje nowy ocean na koniec, /n daje od nowej linii
+
+# mnogir tryby otwierania plików!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# r+ do czytania i pisania
+# w+ do pisania i czytania, różni się tym, że usunie zawartośc istniejącego pliku lub stworzy plik gdy go nie było
+# a+ "wieczny tryb" dopisywania i przy okazji czytania
+# UWAGA! wskaźnik dopisywania jest zawsze na końcu, jeżeliplik nie istniał stworzy go
+with open("oceany.txt", "a+", encoding="UTF-8") as file:
+    file.write("\n nowy ocean 2")
+    file.seek(0) #zaczyna czytać od początku
+    print(file.readline())
+    print(file.tell())    
+
+imiona_nazwiska = []
+imiona = []
+nazwiska = []
+
+with open("imionanazwiska.txt", "r", encoding="UTF-8") as file:
+    imiona_nazwiska = file.read().splitlines()
+    print(imiona_nazwiska) 
+
+for name in imiona_nazwiska:
+    name_parts = name.split()
+    if len(name_parts) == 1:
+        imiona.append(name_parts[0])
+    else:
+        imiona.append(name_parts[0])
+        nazwiska.append(name_parts[1])
+
+with open("imiona.txt", "w") as file:
+    for name in imiona:
+        file.write(name + "\n")
+
+with open("nazwiska.txt", "w") as file:
+    for name in nazwiska:
+        file.write(name + "\n")
+
+print(imiona)
+print(nazwiska) 
