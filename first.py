@@ -950,7 +950,7 @@ nazwiska = []
 
 with open("imionanazwiska.txt", "r", encoding="UTF-8") as file:
     imiona_nazwiska = file.read().splitlines()
-    print(imiona_nazwiska) 
+    # print(imiona_nazwiska) 
 
 for name in imiona_nazwiska:
     name_parts = name.split()
@@ -968,5 +968,121 @@ with open("nazwiska.txt", "w") as file:
     for name in nazwiska:
         file.write(name + "\n")
 
-print(imiona)
-print(nazwiska) 
+# print(imiona)
+# print(nazwiska) 
+
+#JSON !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import json
+
+film = {"title": "Ale ja nie będę tego robił!", 
+        "release_year": 1969, 
+        "won_oscar": True, 
+        "actors": ["Arkadiusz Włodarczyk", "Wiolleta Włodarczyk"], 
+        "budget": None, 
+        "credits": {"director": "Arkadiusz Włodarczyk", 
+                    "writer": "Alan Burger", 
+                    "animator": "Anime Animatrix"}}
+
+#json.dumps(data) - zapisuje dane w postaci stringowej json
+#json.dump(data, nameOfFileHandler, ensure_ascii = False) - zapisuje do pliku w postaci json
+
+encodingFilm = json.dumps(film, ensure_ascii=False)
+
+with open("sample.json", "w", encoding="UTF-8") as file:
+    json.dump(film, file, ensure_ascii=False)
+
+#odczyt plików JSON !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+encodedRetriveMovied = '{"title": "Ale ja nie będę tego robił!", "release_year": 1969, "won_oscar": true, "actors": ["Arkadiusz Włodarczyk", "Wiolleta Włodarczyk"], "budget": null, "credits": {"director": "Arkadiusz Włodarczyk", "writer": "Alan Burger", "animator": "Anime Animatrix"}}'
+
+decodeMovie = json.loads(encodedRetriveMovied)
+# decodeMovie2 = json.load(encodedRetriveMovied)
+
+print(decodeMovie)
+
+encodingFilm2 = json.dumps(film, ensure_ascii=False, indent=4, sort_keys=True) #tutaj dodatkowo robimy wcięcia na 4 spacje i od nowego wiersza, dodatkowo mamy posortowane klucze alfabetycznie
+
+#PyPi - spis paczek pythona
+#pip - instalator paczek
+
+import requests 
+import json
+
+# def check_website(url):
+#     try:
+#         # Wykonaj żądanie GET z limitem czasu
+#         response = requests.get(url, timeout=5)
+        
+#         # Sprawdź status odpowiedzi
+#         if response.status_code == 200:
+#             print(f"Strona {url} istnieje (status: {response.status_code}).")
+#         else:
+#             print(f"Strona {url} zwróciła status: {response.status_code}.")
+#     except requests.exceptions.ConnectionError:
+#         print(f"Nie udało się połączyć z {url}. Strona może nie istnieć.")
+#     except requests.exceptions.Timeout:
+#         print(f"Żądanie do {url} przekroczyło limit czasu.")
+#     except requests.exceptions.RequestException as e:
+#         print(f"Wystąpił błąd: {e}")
+
+# Przykład użycia
+# check_website("http://example.com")  # Strona istnieje
+# check_website("http://gr3333e.pl")   # Strona prawdopodobnie nie istnieje
+
+r = requests.get("https://jsonplaceholder.typicode.com/todos/")
+# tasks = json.loads(r.text)
+
+def countTaskFrequency(tasks):
+     completedTaskFrequencyByUser = dict()
+     for entry in tasks:
+        if(entry["completed"] == True):
+            try:
+                completedTaskFrequencyByUser[entry["userId"]] += 1
+            except:
+                completedTaskFrequencyByUser[entry["userId"]] = 1
+     return completedTaskFrequencyByUser
+
+def users_with_top_completed_tasks(completedTaskFrequency):
+     userIdWithMaxCompletedTasks = []
+     maxAmountOfCompletedTask = max(completedTaskFrequency.values())
+     for userId, numberOfCompletedTask in completedTaskFrequency.items():
+        if(numberOfCompletedTask == maxAmountOfCompletedTask):
+            userIdWithMaxCompletedTasks.append(userId)
+     return userIdWithMaxCompletedTasks
+
+try: 
+    tasks = r.json()
+except json.decoder.JSONDecodeError:
+    print("Niepoprawny format")
+else:
+    completedTaskFrequency = countTaskFrequency(tasks)
+    result = users_with_top_completed_tasks(completedTaskFrequency)
+
+print(result)
+ 
+
+#sposób 1 
+r = requests.get("https://jsonplaceholder.typicode.com/users/")
+users = r.json()
+# print(users)
+
+for user in users:
+    if (user["id"] in result):
+        print("Wygrana należy do:", user["name"])
+
+#sposób 2
+stringForSend = "https://jsonplaceholder.typicode.com/users?"
+for user in result:
+    print(user)
+    stringForSend += f"id={user}&"  # Dodaj parametry do URL
+
+stringForSend = stringForSend.rstrip("&")
+r = requests.get(stringForSend)
+user = r.json()
+print(user)
+
+#działanie na zdjęciach biblioteka pillow
+
+from PIL import Image
+im = Image.open("XD.jpg")
+print("Wysokość zdjęcia wynosi:", im.size[1])
+print("Szerokość zdjęcia wynosi:", im.size[0])
