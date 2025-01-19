@@ -982,7 +982,7 @@ film = {"title": "Ale ja nie będę tego robił!",
         "credits": {"director": "Arkadiusz Włodarczyk", 
                     "writer": "Alan Burger", 
                     "animator": "Anime Animatrix"}}
-
+print(film)
 #json.dumps(data) - zapisuje dane w postaci stringowej json
 #json.dump(data, nameOfFileHandler, ensure_ascii = False) - zapisuje do pliku w postaci json
 
@@ -1086,3 +1086,67 @@ from PIL import Image
 im = Image.open("XD.jpg")
 print("Wysokość zdjęcia wynosi:", im.size[1])
 print("Szerokość zdjęcia wynosi:", im.size[0])
+
+#API !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import webbrowser
+from datetime import datetime, timedelta 
+
+lastWeeks = datetime.today() - timedelta(days=7)
+lastWeeks_unix = int(lastWeeks.timestamp())
+
+param = {
+    "site" : "stackoverflow",
+    "sort" : "votes",
+    "order": "desc",
+    "fromdate": lastWeeks_unix, 
+    "tagged": "python",
+    "min": 10
+}
+re = requests.get("https://api.stackexchange.com/2.3/questions/", param)
+try:
+    info = re.json()
+except json.decoder.JSONDecodeError:
+    print("Niepoprawny format")
+else:
+    for question in info["items"]:
+        print(question["link"])
+        # webbrowser.open_new_tab(question["link"])
+        
+param1 = {
+    "amount": 5
+}
+
+# catFacts = requests.get("https://cat-fact.herokuapp.com/facts/random", param1)
+# print(catFacts)
+
+# photoCat = requests.get('https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1')
+# photoCatJson = photoCat.json()
+# print(photoCatJson)
+# webbrowser.open_new_tab(photoCatJson[0]["url"])
+
+# funkcje generujące !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+def generate_even_number():
+    for element in range(400):
+        if(element % 2) == 0:
+            yield element
+
+evenNumbersGenerator = (element
+                        for element in range(400)
+                        if (element % 2 == 0))
+
+a = generate_even_number()
+
+def generate_10_numbers():
+    x = 0
+    while x < 10:
+        yield x 
+        x = x + 1
+
+print(list(generate_10_numbers())) #wynik możemy odrazu zapisać jako lista
+
+# kluczową różnicą funkcji generującej a generatorem jest to, że funkcje generująca możemy wykorzystać wiele razy, a generator jak raz opróżnimy tam już nic nie ma i nie da się zapełnić wielu list np.
+
+#ważne skróty 
+#ctrn + shift + n - zaznaczanie fragmentu kodu i odpala w terminalu tylko ten fragment kodu
+# jeżeli chce włączyć jupiter klikam prawym przyciskiem myszy => run in interactive window => run current file
