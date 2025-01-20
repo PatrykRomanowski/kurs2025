@@ -1137,16 +1137,28 @@ evenNumbersGenerator = (element
 
 a = generate_even_number()
 
-def generate_10_numbers():
-    x = 0
-    while x < 10:
-        yield x 
-        x = x + 1
+def generate_twenty_numbers():
+    """Generate numbers from 0 to 19."""
+    number = 0
+    while number < 20:
+        yield number
+        number += 1
 
-print(list(generate_10_numbers())) #wynik możemy odrazu zapisać jako lista
+# Convert the generator to a list and print it
+print(list(generate_twenty_numbers()))
 
 # kluczową różnicą funkcji generującej a generatorem jest to, że funkcje generująca możemy wykorzystać wiele razy, a generator jak raz opróżnimy tam już nic nie ma i nie da się zapełnić wielu list np.
 
 #ważne skróty 
 #ctrn + shift + n - zaznaczanie fragmentu kodu i odpala w terminalu tylko ten fragment kodu
 # jeżeli chce włączyć jupiter klikam prawym przyciskiem myszy => run in interactive window => run current file
+
+#programowanie obiektowe !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+class User:
+    pass
+
+patryk = User()
+dominika = User()
+patryk.age = 35
+dominika.age = 34
