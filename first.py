@@ -1156,9 +1156,54 @@ print(list(generate_twenty_numbers()))
 #programowanie obiektowe !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 class User:
-    pass
+    age = 0
+    name = ""
+    def __init__(self, name, age): #metoda jest wywoływana, podczas inicjalizajcji obiektu
+        self.name = name
+        self.age = age
+    def printAge(self, message):
+        print(message + ": " + str(self.age))
+    
 
-patryk = User()
-dominika = User()
-patryk.age = 35
-dominika.age = 34
+patryk = User("Patryk", 34)
+dominika = User("Dominika", 33)
+patryk.age = 34
+dominika.age = 33
+
+
+patryk.printAge("Patryk")
+dominika.printAge("Dominika")
+
+#ćwiczenie 
+
+class Rocket:
+    """
+    Rocket class.
+    """
+    height = 0
+    def __init__(self, counter, name):
+        self.name = name
+        while counter > 0:
+            randomHeight = random.randint(1, 100)
+            self.height += randomHeight
+            print("Rakieta wzbiła się o:", randomHeight, "metrów")
+            counter -= 1
+    def printHeight(self):
+        """
+            drukujemy wynik ostateczny dla konkretnej rakiety
+        """
+        print(self.name + " wzbiła się o:", self.height, "metrów")
+            
+rocket1 = Rocket(5, "Rakieta1")
+rocket2 = Rocket(5, "Rakieta2")
+rocket3 = Rocket(5, "Rakieta3")
+rocket4 = Rocket(5, "Rakieta4")
+rocket5 = Rocket(5, "Rakieta5")
+
+rocket1.printHeight()
+rocket2.printHeight()
+rocket3.printHeight()
+rocket4.printHeight()
+rocket5.printHeight()
+
+rocket6 = Rocket(5, "Rakieta6")
